@@ -11,7 +11,6 @@ var Door = module.exports = function(sensorPin, statusOpenPin, statusClosedPin) 
   var statusClosed = new Gpio(statusClosedPin || 23, 'out')
 
   var update = function(err, value) {
-    console.log('Value %d', value)
     statusOpen.writeSync(value^1)
     statusClosed.writeSync(value)
     this.isOpen = !value
