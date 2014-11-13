@@ -44,10 +44,12 @@
 
     var link = document.querySelector('.toggle a')
     link.addEventListener('click', toggleClicked, false)
-    function toggleClicked() {
+    function toggleClicked(ev) {
       request('/toggle', function(err, data) {
 
       })
+      ev.preventDefault()
+      return false
     }
 
 

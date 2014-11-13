@@ -24,8 +24,9 @@ server.route([
     method: 'GET',
     path: '/toggle',
     handler: function(request, reply) {
-      door.toggle()
-      reply({ toggled: true })
+      door.toggle(function() {
+        reply({ toggled: true })
+      })
     }
   }
 ])
