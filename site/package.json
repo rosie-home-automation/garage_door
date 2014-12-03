@@ -14,7 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "config": "^1.7.0",
-    "hapi": "^7.5.0",
-    "onoff": "^0.3.2"
+    "hapi": "^7.5.0"
   }
 }

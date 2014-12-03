@@ -27,12 +27,19 @@ var Door = module.exports = function(sensorPin, statusOpenPin, statusClosedPin, 
 util.inherits(Door, EventEmitter)
 var api = Door.prototype
 
-api.toggle = function(callback) {
+api.toggle = function() {
   console.log('Door toggled')
   var doorSwitch = new Gpio(this.doorSwitchPin || 25, 'out')
   doorSwitch.writeSync(1)
   setTimeout(function() {
     doorSwitch.writeSync(0)
-    callback()
   }, 100)
+}
+
+api.open = function() {
+  if (!this.isOpen) this.toggle()
+}
+
+api.close = function() {
+  if (this.isOpen) this.toggle()
 }

@@ -1,0 +1,20 @@
+{
+  "name": "garage-door",
+  "version": "0.0.0",
+  "description": "Garage door monitor",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mikefrey/garage.git"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "author": "Mike Frey <frey.mike@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.7.0",
+    "onoff": "^0.3.2",
+    "request": "^2.49.0"
+  }
+}
