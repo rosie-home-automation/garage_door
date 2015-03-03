@@ -1,18 +1,38 @@
 var Path = require('path')
 var Hapi = require('hapi')
+var Good = require('good')
 
 var doors = {}
 
-var server = new Hapi.Server(3000, {
-  files: { relativeTo: Path.join(__dirname, 'public') }
+var server = new Hapi.Server()
+server.connection({
+  port: process.env.PORT || 3000,
+  state: { strictHeader: false },
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'public')
+    }
+  }
+})
+
+server.views({
+  engines: { html: require('hapi-dust') },
+  path: Path.join(__dirname, 'templates')
 })
 
 server.route([
   {
     method: 'GET',
-    path: '/',
+    path: '/door/{doorID}',
+    handler: function(request, reply) {
+      reply.view('home', { doorID: request.params.doorID })
+    }
+  },
+  {
+    method: 'GET',
+    path: '/{param*}',
     handler: {
-      file: 'home.html'
+      directory: { path: Path.join(__dirname, 'public') }
     }
   },
   {
@@ -35,7 +55,7 @@ server.route([
         var door = doors[id] || (doors[id] = {})
         door.state = request.payload.state
 
-        reply({ command: door.command })
+        reply({ command: door.command || null })
         door.command = undefined
       }
     }
@@ -45,12 +65,13 @@ server.route([
     path: '/state/{id}',
     handler: function(request, reply) {
       var id = request.params.id
-      reply({ state: doors[id].state })
+      var state = doors[id] && door[id].state || null
+      reply({ state: state })
     }
   },
   {
     method: 'GET',
-    path: '/close/{{id}}',
+    path: '/close/{id}',
     handler: function(request, reply) {
       var id = request.params.id
       doors[id].command = 'close'
@@ -59,7 +80,7 @@ server.route([
   },
   {
     method: 'GET',
-    path: '/open/{{id}}',
+    path: '/open/{id}',
     handler: function(request, reply) {
       var id = request.params.id
       doors[id].command = 'open'
@@ -68,7 +89,18 @@ server.route([
   }
 ])
 
-server.start(function() {
-  console.log('Server running at: %s', server.info.uri)
-})
+server.register({
+  register: Good,
+  options: {
+    reporters: [{
+      reporter: require('good-console'),
+      args: [{ log: '*', response: '*' }]
+    }]
+  }
+}, function(err) {
+  if (err) throw err
 
+  server.start(function() {
+    console.log('Server running at: %s', server.info.uri)
+  })
+})

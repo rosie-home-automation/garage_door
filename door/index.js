@@ -4,7 +4,7 @@ var Door = require('./door')
 var door = new Door()
 
 var payload = null
-var pingUrl = config.get('ping.url')
+var pingUrl = config.get('ping.url') + '/' + config.get('doorID')
 var req = request.defaults({
   uri: pingUrl,
   method: 'POST'
