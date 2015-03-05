@@ -65,7 +65,7 @@ server.route([
     path: '/state/{id}',
     handler: function(request, reply) {
       var id = request.params.id
-      var state = doors[id] && door[id].state || null
+      var state = doors[id] && doors[id].state || null
       reply({ state: state })
     }
   },

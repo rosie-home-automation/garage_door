@@ -1,10 +1,12 @@
 updateState()
 
+window.doorState = 'unknown'
+
 function updateState() {
   request('/state', function(err, data) {
     if (err) document.body.className = 'unknown'
     if (data) {
-      document.body.className = data.state || 'unknown'
+      window.doorState = document.body.className = data.state || 'unknown'
     }
     setTimeout(updateState, 5000)
   })
@@ -13,9 +15,8 @@ function updateState() {
 var link = document.querySelector('.toggle a')
 link.addEventListener('click', toggleClicked, false)
 function toggleClicked(ev) {
-  request('/toggle', function(err, data) {
-
-  })
+  var url = window.doorState == 'closed' ? '/open' : '/close'
+  request(url, function(err, data) { })
   ev.preventDefault()
   return false
 }

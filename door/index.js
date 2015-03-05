@@ -3,7 +3,7 @@ var config = require('config')
 var Door = require('./door')
 var door = new Door()
 
-var payload = null
+var payload = {}
 var pingUrl = config.get('ping.url') + '/' + config.get('doorID')
 var req = request.defaults({
   uri: pingUrl,

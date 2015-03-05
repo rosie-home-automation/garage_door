@@ -1,15 +1,16 @@
 var Gpio = require('onoff').Gpio
 var util = require('util')
 var EventEmitter = require('events').EventEmitter
+var config = require('config')
 
-var Door = module.exports = function(sensorPin, statusOpenPin, statusClosedPin, doorSwitchPin) {
+var Door = module.exports = function() {
   EventEmitter.call(this)
   this.isOpen = false
-  this.doorSwitchPin = doorSwitchPin
+  var pins = config.get('pins')
 
-  var sensor = new Gpio(sensorPin || 18, 'in', 'both')
-  var statusOpen = new Gpio(statusOpenPin || 17, 'out')
-  var statusClosed = new Gpio(statusClosedPin || 23, 'out')
+  var sensor = new Gpio(pins.sensor, 'in', 'both')
+  var statusOpen = new Gpio(pins.statusOpen, 'out')
+  var statusClosed = new Gpio(pins.statusClosed, 'out')
 
   var update = function(err, value) {
     statusOpen.writeSync(value^1)
@@ -29,7 +30,7 @@ var api = Door.prototype
 
 api.toggle = function() {
   console.log('Door toggled')
-  var doorSwitch = new Gpio(this.doorSwitchPin || 25, 'out')
+  var doorSwitch = new Gpio(config.get('pins.doorSwitch'), 'out')
   doorSwitch.writeSync(1)
   setTimeout(function() {
     doorSwitch.writeSync(0)
