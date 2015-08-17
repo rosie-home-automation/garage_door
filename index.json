@@ -1,0 +1,24 @@
+{
+  "connections": [
+    {
+      "port": 4000
+    }
+  ],
+  "plugins": {
+    "./plugins/garage_door_core": {
+      "pins": {
+        "sensor":       17,
+        "statusOpen":   23,
+        "statusClosed": 24,
+        "doorSwitch":   18
+      }
+    },
+    "./plugins/garage_door_site": {
+      "doorID": 1,
+      "ping": {
+        "url": "http://something.herokuapp.com/ping",
+        "interval": 10000
+      }
+    }
+  }
+}
