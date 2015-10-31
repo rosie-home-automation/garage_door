@@ -1,0 +1,46 @@
+{
+  "connections": [
+    {
+      "port": 4020,
+      "routes": {
+        "cors": {
+          "credentials": true
+        }
+      },
+      "router": {
+        "isCaseSensitive": false,
+        "stripTrailingSlash": true
+      },
+      "labels": ["api", "rest", "garage"]
+    }
+  ],
+  "plugins": {
+    "good": {
+      "reporters": [
+        {
+          "reporter": "good-console",
+          "events": {
+            "response": "*",
+            "ops": "*",
+            "error": "*",
+            "log": "*"
+          }
+        }
+      ]
+    },
+    "garage_door_core": {
+      "pins": {
+        "sensor":       17,
+        "statusOpen":   23,
+        "statusClosed": 24,
+        "doorSwitch":   18
+      }
+    },
+    "garage_door_rfid": {
+      "pins": {
+        "data_0": 2,
+        "data_1": 14
+      }
+    }
+  }
+}
