@@ -1,8 +1,8 @@
 {
-  "name": "garage-door",
-  "version": "0.0.0",
+  "name": "garage_door",
+  "version": "0.1.0",
   "description": "Garage door monitor",
-  "main": "index.js",
+  "main": "index.json",
   "repository": {
     "type": "git",
     "url": "git@github.com:mikefrey/garage.git"
@@ -14,10 +14,13 @@
   "author": "Mike Frey <frey.mike@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "config": "^1.12.0",
-    "hapi": "^8.2.0",
+    "garage_door_core": "0.2.0",
+    "garage_door_rfid": "0.2.0",
+    "good": "^6.3.0",
+    "good-console": "^5.0.3",
+    "hapi": "^10.1.0",
     "onoff": "^1.0.2",
-    "rejoice": "^2.0.1",
+    "rejoice": "^2.2.0",
     "request": "^2.53.0"
   }
 }
