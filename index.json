@@ -1,11 +1,34 @@
 {
   "connections": [
     {
-      "port": 4000
+      "port": 4020,
+      "routes": {
+        "cors": {
+          "credentials": true
+        }
+      },
+      "router": {
+        "isCaseSensitive": false,
+        "stripTrailingSlash": true
+      },
+      "labels": ["api", "rest", "garage"]
     }
   ],
   "plugins": {
-    "./plugins/garage_door_core": {
+    "good": {
+      "reporters": [
+        {
+          "reporter": "good-console",
+          "events": {
+            "response": "*",
+            "ops": "*",
+            "error": "*",
+            "log": "*"
+          }
+        }
+      ]
+    },
+    "garage_door_core": {
       "pins": {
         "sensor":       17,
         "statusOpen":   23,
@@ -13,11 +36,10 @@
         "doorSwitch":   18
       }
     },
-    "./plugins/garage_door_site": {
-      "doorID": 1,
-      "ping": {
-        "url": "http://something.herokuapp.com/ping",
-        "interval": 10000
+    "garage_door_rfid": {
+      "pins": {
+        "data_0": 2,
+        "data_1": 14
       }
     }
   }
