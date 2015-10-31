@@ -1,0 +1,16 @@
+{
+  "database": {
+    "name": "garage_door",
+    "username": "garage_door",
+    "password": "password",
+    "options": {
+      "host": "localhost",
+      "dialect": "postgres",
+      "pool": {
+        "min": 0,
+        "max": 5,
+        "idle": 10000
+      }
+    }
+  }
+}
