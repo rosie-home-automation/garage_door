@@ -31,16 +31,26 @@
     "garage_door_core": {
       "pins": {
         "sensor":       17,
-        "statusOpen":   23,
-        "statusClosed": 24,
-        "doorSwitch":   18
+        "statusOpen":   19,
+        "statusClosed": 26,
+        "doorSwitch":   10
       }
     },
     "garage_door_rfid": {
       "pins": {
-        "data_0": 2,
-        "data_1": 14
+        "data_0": 27,
+        "data_1": 22,
+        "greenLed": 6,
+        "redLed": 25,
+        "buzzer": 23
       }
+    },
+    "garage_door_slack": {
+      "url": "https://hooks.slack.com/services/XXXXXX/YYYYYY/ZZZZZZ",
+      "options": {
+        "channel": "#general"
+      },
+      "username": "GarageBot"
     }
   }
 }

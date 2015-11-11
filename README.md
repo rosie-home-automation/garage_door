@@ -3,26 +3,28 @@ Garage
 
 Controlling my garage door with a Rasberry Pi and Node.js
 
-### Printable board from OSH Park
-
-https://oshpark.com/projects/QUh1wAHP
 
 ### Schematic and Board Layout on 123d.circuits.io
 
-http://123d.circuits.io/circuits/449016-garage
+https://123d.circuits.io/circuits/1109243
+
+* Can be printed from companies such as [OSH Park](https://oshpark.com)
 
 ### Parts list
 
- * U1 - 2x23 female header
- * U2 - [Radio Shack 5VDC/1A SPST Reed Relay](http://www.radioshack.com/compact-5vdc-1a-spst-reed-relay/2750232.html)
- * T1 - NPN transistor
- * R1 - 220 ohm resistor
- * R2 - 220 ohm resistor
- * R3 - 1k ohm resistor
- * R4 - 10k ohm resistor
- * R5 - 10k ohm resistor
- * D1 - Diode
- * D2 - Green 3mm LED
- * D3 - Red 3mm LED
- * JPGD - 1x2 male header
- * JPSW - 1x2 male header
+* Raspberry Pi B+
+* Jrelay - 5v DC relay
+  * Developed for [TOOGOO(R) DC 5V Coil Relay Module](http://www.amazon.com/gp/product/B00TO7IY76?psc=1&redirect=true&ref_=oh_aui_detailpage_o02_s01)
+* URFID - RFID reader
+  * Developed with Wiegand in mind
+  * Developed for [aptiQ MTK15](http://us.allegion.com/products/readers/multitech/mtk15/pages/default.aspx)
+* Dclosed - Green 3mm LED
+* Dopen - Red 3mm LED
+* R1 - 220 ohm resistor
+* R2 - 220 ohm resistor
+* R3 - 2.2k ohm resistor
+* R4 - 2.2k ohm resistor
+* R5 - 1k ohm resistor
+* R6 - 10k ohm resistor
+* R7 - 3.3k ohm resistor
+* R8 - 3.3k ohm resistor
