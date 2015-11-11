@@ -1,7 +1,18 @@
 Garage
 -----
 
-Controlling my garage door with a Rasberry Pi and Node.js
+Control a garage door with a Rasberry Pi and Node.js.
+
+### Plugins
+
+* https://github.com/rosie-home-automation/garage_door_core
+ * The main plugin for actually controlling the garage door 
+* https://github.com/rosie-home-automation/garage_door_rfid
+ * Allows reading rfid cards as well as user authorization
+ * If an authorized rfid card is read, it will trigger the garage door
+ * Adds basic garage and rfid logging
+* https://github.com/rosie-home-automation/garage_door_slack
+ * Sends garage door events (open/closed) to a slack channel
 
 
 ### Schematic and Board Layout on 123d.circuits.io
